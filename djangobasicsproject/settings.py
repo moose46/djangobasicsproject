@@ -15,6 +15,7 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+TEMPLATES_DIR = BASE_DIR / "templates"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -55,7 +56,7 @@ ROOT_URLCONF = "djangobasicsproject.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [TEMPLATES_DIR],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -120,5 +121,42 @@ STATIC_URL = "static/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
+import os
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+LOGGING_DIR = os.path.join(BASE_DIR, "logs")
+
+if not os.path.exists(LOGGING_DIR):
+    os.makedirs(LOGGING_DIR)
+# https://www.udemy.com/course/masteringdjango/learn/lecture/42235624#questions/21568794
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "verbose": {
+            "format": "{asctime}-{filename}-{funcName}-{levelname}-{levelno}-{lineno}-{message}",
+            "style": "{",
+        }
+    },
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "verbose",
+        },
+        "mycustom_log": {
+            "level": "DEBUG",
+            "class": "logging.FileHandler",
+            "filename": os.path.join(LOGGING_DIR, "mycustom_logs.log"),
+            "formatter": "verbose",
+        },
+    },
+    "root": {"handlers": ["console"], "level": "DEBUG"},
+    "loggers": {
+        "mycustom_logger": {
+            "handlers": ["mycustom_log"],
+            "level": "DEBUG",  # adjust as needed
+            "propagate": True,
+        }
+    },
+}

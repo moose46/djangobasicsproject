@@ -1,3 +1,5 @@
+import datetime
+import http
 from mailbox import Message
 
 from django.http import HttpResponse
@@ -27,6 +29,7 @@ def UseVariablesAsResponse(request):
     return HttpResponse(Message)
 
 
+# http://127.0.0.1:8000/djangobasicsapp/GetRequestDemo?Country=Bite%20Me
 def GetRequestVariables(request):
     # GET,POST, PUT,DELETE,PATCH
     Message = ""
@@ -41,3 +44,41 @@ def GetRequestVariables(request):
         else:
             Message += "<h1>You haven't supplied value for Country Parameter ...</h1>"
     return HttpResponse(Message)
+
+
+from datetime import date, datetime
+
+
+# http://127.0.0.1:8000/djangobasicsapp/ShowTime
+def ShowDateTimeInfo(request):
+    TodaysDate = datetime.now()
+    templatefilename = "djangobasicsapp/ShowTimeInfo.html"
+    context = {"TodaysDate": TodaysDate}
+    return render(request, templatefilename, context)
+
+
+import logging
+
+
+# http://127.0.0.1:8000/djangobasicsapp/LoggingDemo
+def LogginExample(request):
+    logging.debug(f"Debug : I just entered into the View .. {datetime.now()}")
+    logging.info(f"Info : Confirmation that things are working as excpected ")
+    logging.warning(f"Warning : An indication that something unexpected happened ")
+    logging.error(f"Error : Due to a more serious problem ")
+    logging.critical(
+        f"Critical : A serious error, indicating that the program itself may not be able to contine"
+    )
+
+    custom_logger = logging.getLogger("mycustom_logger")
+    custom_logger.debug(f"Debug : I just entered into the View .. {datetime.now()}")
+    custom_logger.info(f"Info : Confirmation that things are working as excpected ")
+    custom_logger.warning(
+        f"Warning : An indication that something unexpected happened "
+    )
+    custom_logger.error(f"Error : Due to a more serious problem ")
+    custom_logger.critical(
+        f"Critical : A serious error, indicating that the program itself may not be able to contine"
+    )
+
+    return HttpResponse("Logging Completed!")

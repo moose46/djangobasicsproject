@@ -8,4 +8,6 @@ urlpatterns = [
     path("ShowMessages", views.ShowMoreMessage, name="ShowMessages"),
     path("UseVariables", views.UseVariablesAsResponse, name="UVR"),
     path("GetRequestDemo", views.GetRequestVariables, name="GVR"),
+    path("ShowTime", views.ShowDateTimeInfo, name="SDI"),
+    path("LoggingDemo", views.LogginExample, name="LoggingExample"),
 ]
