@@ -10,4 +10,6 @@ urlpatterns = [
     path("GetRequestDemo", views.GetRequestVariables, name="GVR"),
     path("ShowTime", views.ShowDateTimeInfo, name="SDI"),
     path("LoggingDemo", views.LogginExample, name="LoggingExample"),
+    path("IfTagDemo", views.iftagdemo, name="ITD"),
+    path("ShowProducts", views.ShowProducts, name="SP"),
 ]

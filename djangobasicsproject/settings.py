@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+import py_compile
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -131,6 +132,7 @@ LOGGING_DIR = os.path.join(BASE_DIR, "logs")
 
 if not os.path.exists(LOGGING_DIR):
     os.makedirs(LOGGING_DIR)
+
 # https://www.udemy.com/course/masteringdjango/learn/lecture/42235624#questions/21568794
 LOGGING = {
     "version": 1,

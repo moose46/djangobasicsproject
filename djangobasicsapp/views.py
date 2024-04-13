@@ -1,6 +1,9 @@
 import datetime
 import http
 from mailbox import Message
+from math import log
+from re import template
+from urllib import request
 
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -82,3 +85,89 @@ def LogginExample(request):
     )
 
     return HttpResponse("Logging Completed!")
+
+
+# http://127.0.0.1:8000/djangobasicsapp/IfTagDemo
+def iftagdemo(request):
+    data = {
+        "name": "James Anderson",
+        "isVisible": True,
+        "loggedIn": False,
+        "countryCode": "IN",
+        "workExperience": 15,
+    }
+    templateFilename = "djangobasicsapp/IfTagDemo.html"
+    context = {"Data": data}
+    return render(request, templateFilename, context=context)
+
+
+def ShowProducts(request):
+    Products = [
+        {
+            "productID": 1,
+            "productName": "AMD Ryzen 3990",
+            "quantity": 100,
+            "unitsInStock": 50,
+            "disContinued": False,
+            "cost": 3000,
+        },
+        {
+            "productID": 2,
+            "productName": "AMD Ryzen 3980",
+            "quantity": 100,
+            "unitsInStock": 50,
+            "disContinued": False,
+            "cost": 4000,
+        },
+        {
+            "productID": 3,
+            "productName": "AMD Ryzen 3970",
+            "quantity": 100,
+            "unitsInStock": 50,
+            "disContinued": False,
+            "cost": 5000,
+        },
+        {
+            "productID": 4,
+            "productName": "AMD Ryzen 3960",
+            "quantity": 100,
+            "unitsInStock": 50,
+            "disContinued": True,
+            "cost": 6000,
+        },
+        {
+            "productID": 5,
+            "productName": "AMD Ryzen 3950",
+            "quantity": 100,
+            "unitsInStock": 50,
+            "disContinued": False,
+            "cost": 7000,
+        },
+        {
+            "productID": 6,
+            "productName": "AMD Ryzen 3940",
+            "quantity": 100,
+            "unitsInStock": 50,
+            "disContinued": True,
+            "cost": 8000,
+        },
+        {
+            "productID": 7,
+            "productName": "AMD Ryzen 3930",
+            "quantity": 100,
+            "unitsInStock": 50,
+            "disContinued": True,
+            "cost": 9000,
+        },
+        {
+            "productID": 8,
+            "productName": "AMD Ryzen 3920",
+            "quantity": 100,
+            "unitsInStock": 50,
+            "disContinued": False,
+            "cost": 10000,
+        },
+    ]
+    TemplateFile = "djangobasicsapp/ShowProducts.html"
+    context = {"Products": Products, "TotalProducts": len(Products)}
+    return render(request, TemplateFile, context)
