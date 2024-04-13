@@ -168,6 +168,18 @@ def ShowProducts(request):
             "cost": 10000,
         },
     ]
+    Processors = [
+        {
+            "Category": "AMD",
+            "processors": ["Ryzen 3990", "Ryzen 3970", "Ryzen 3960", "Ryzen 3950"],
+        },
+        {"Category": "Intel", "processors": ["Xeon 8362", "Xeon 8358", "Xeon 8380"]},
+    ]
+
     TemplateFile = "djangobasicsapp/ShowProducts.html"
-    context = {"Products": Products, "TotalProducts": len(Products)}
+    context = {
+        "Products": Products,
+        "TotalProducts": len(Products),
+        "Processors": Processors,
+    }
     return render(request, TemplateFile, context)

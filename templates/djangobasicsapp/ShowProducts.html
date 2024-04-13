@@ -83,5 +83,18 @@
         <input class="form-control" type="text" value="{{ product.quantity }}" />
       {% endfor %}
     </div>
+    <div>
+      <h2>Select Processor</h2>
+      <select>
+        {% for processor in Processors %}
+          <optgroup label="{{ processor.Category }}">
+            {% for processorname in processor.processors %}
+              <option>{{ processorname }}</option>
+            {% endfor %}
+          </optgroup>
+        {% endfor %}
+      </select>
+    </div>
+    <hr />
   </body>
 </html>
