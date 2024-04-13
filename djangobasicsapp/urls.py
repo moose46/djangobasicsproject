@@ -12,4 +12,5 @@ urlpatterns = [
     path("LoggingDemo", views.LogginExample, name="LoggingExample"),
     path("IfTagDemo", views.iftagdemo, name="ITD"),
     path("ShowProducts", views.ShowProducts, name="SP"),
+    path("ShowUsers", views.LoadUsers, name="LU"),
 ]

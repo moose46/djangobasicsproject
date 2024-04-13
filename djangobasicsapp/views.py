@@ -183,3 +183,18 @@ def ShowProducts(request):
         "Processors": Processors,
     }
     return render(request, TemplateFile, context)
+
+
+import requests
+
+
+def LoadUsers(request):
+    templatefilename = "djangobasicsapp/ShowUsers.html"
+    response = CallRestAPI()
+    context = {"users": response.json()}
+    return render(request, templatefilename, context)
+
+
+def CallRestAPI():
+    BASE_URL = "https://fakestoreapi.com"
+    return requests.get(f"{BASE_URL}/users")
