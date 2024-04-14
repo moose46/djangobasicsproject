@@ -1,0 +1,53 @@
+{% extends 'djangobasicsapp/Layout.html' %}
+{% block body_block %}
+  <div class="container-fluid">
+    <div class="row">
+      <h2>User Details</h2>
+      <div class="col-6">
+        <div class="card w-75 p-2">
+          <div class="card-header" style="height:300px">
+            <p>
+              <b>{{ user.username }}</b>
+            </p>
+            <img src="{{ image }}" class="card-img-top" height="200px" alt="" />
+          </div>
+          <div class="card-body">
+            <dl>
+              <dt>Email</dt>
+              <dd>{{ user.email }}</dd>
+              <dt>First Name</dt>
+              <dd>{{ user.name.firstname }}</dd>
+              <dt>Last Name</dt>
+              <dd>{{ user.name.lastname }}</dd>
+              <dt>Phone</dt>
+              <dd>{{ user.phone }}</dd>
+            </dl>
+          </div>
+          <div class="card-footer"></div>
+        </div>
+      </div>
+      <div class="col-6">
+        <h2>Address Details</h2>
+        <div class="card w-50 p-2">
+          <div class="card-header" style="height: 100px;">
+            <p>
+              <b>City : {{ user.address.city }}</b>
+            </p>
+          </div>
+          <div class="card-body">
+            <dt>Street</dt>
+            <dd>{{ user.address.street }}</dd>
+            <dt>Street Number</dt>
+            <dd>{{ user.address.number }}</dd>
+            <dt>Zip Code</dt>
+            <dd>{{ user.address.zipcode }}</dd>
+            <dt>Geo Location Latitude</dt>
+            <dd>{{ user.address.geolocation.lat }}</dd>
+            <dt>Geo Location Longitude</dt>
+            <dd>{{ user.address.geolocation.lon }}</dd>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -15,4 +15,5 @@ urlpatterns = [
     path("ShowProducts", views.ShowProducts, name="SP"),
     path("ShowUsers", views.LoadUsers, name="LU"),
     path("ShowUsers2", views.LoadUsers2, name="LU2"),
+    path("ShowUsersDetails", views.LoadUserDetails, name="ShowUserDetails"),
 ]

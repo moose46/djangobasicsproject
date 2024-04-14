@@ -210,3 +210,17 @@ def LoadUsers2(request):
 def CallRestAPI():
     BASE_URL = "https://fakestoreapi.com"
     return requests.get(f"{BASE_URL}/users")
+
+
+def CallRestAPI2(userid):
+    BASE_URL = "https://fakestoreapi.com"
+    return requests.get(f"{BASE_URL}/users/{userid}")
+
+
+def LoadUserDetails(request):
+    counter = 1
+    templatefilename = "djangobasicsapp/ShowUserDetails.html"
+    response = CallRestAPI2(counter)
+    image = "https://i.pravatar.cc"
+    context = {"user": response.json(), "image": image}
+    return render(request, templatefilename, context)
