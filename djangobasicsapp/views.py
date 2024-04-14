@@ -16,6 +16,10 @@ def Home(request):
     return HttpResponse("<h1>Hello World! Django 5.0.4</h1>")
 
 
+def Index(request):
+    return render(request, "djangobasicsapp/Index.html")
+
+
 def ShowMoreMessage(request):
     return HttpResponse(
         "<h1>Hello World! Django 5.0.4</h1><h2>Hello World! Django 5.0.4</h2><h3>Hello World! Django 5.0.4</h3>"

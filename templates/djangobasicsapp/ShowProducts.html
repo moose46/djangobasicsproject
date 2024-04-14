@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+{% extends 'djangobasicsapp/Layout.html' %}
+{% comment %} <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,93 +9,96 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </head>
   <body>
-    <h1>Total Number of Products are {{ TotalProducts }}</h1>
-    <table class="table">
-      <thead>
-        <tr>
-          <td>Product ID</td>
-          <td>Product Name</td>
-          <td>Quantity</td>
-          <td>Units In Stock</td>
-          <td>DisContinued</td>
-          <td>Cost</td>
-        </tr>
-      </thead>
-      <tbody>
-        {% for product in Products %}
+    {% endcomment %}
+    {% block body_block %}
+      <h1>Total Number of Products are {{ TotalProducts }}</h1>
+      <table class="table">
+        <thead>
           <tr>
-            <td>{{ product.productID }}</td>
-            <td>{{ product.productName }}</td>
-            <td>{{ product.quantity }}</td>
-            <td>{{ product.unitsInStock }}</td>
-            <td>{{ product.disContinued }}</td>
-            <td>{{ product.cost }}</td>
+            <td>Product ID</td>
+            <td>Product Name</td>
+            <td>Quantity</td>
+            <td>Units In Stock</td>
+            <td>DisContinued</td>
+            <td>Cost</td>
           </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-    <ul>
-      {% for product in Products %}
-        <li>{{ product.productName }}</li>
-      {% endfor %}
-    </ul>
-    <ol>
-      {% for product in Products %}
-        <li>{{ product.productName }}</li>
-      {% endfor %}
-    </ol>
-    <ol class="list-unstyled">
-      {% for product in Products %}
-        <li>
-          <label for="{{ product.productID }}">Product ID</label>
-          <input type="checkbox" id="{{ product.productID }}" /> {{ product.productName }}
-        </li>
-      {% endfor %}
-    </ol>
-    <ol class="list-unstyled">
-      {% for product in Products %}
-        <li>
-          <input type="radio" name="productName" id="{{ product.productID }}" /> {{ product.productName }}
-        </li>
-      {% endfor %}
-    </ol>
-    <div>
-      <select class="form-select">
+        </thead>
+        <tbody>
+          {% for product in Products %}
+            <tr>
+              <td>{{ product.productID }}</td>
+              <td>{{ product.productName }}</td>
+              <td>{{ product.quantity }}</td>
+              <td>{{ product.unitsInStock }}</td>
+              <td>{{ product.disContinued }}</td>
+              <td>{{ product.cost }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <ul>
         {% for product in Products %}
-          <option value="{{ product.productID }}">{{ product.productName }}</option>
+          <li>{{ product.productName }}</li>
         {% endfor %}
-      </select>
-    </div>
-    <div>
-      <select class="form-select" size="4">
+      </ul>
+      <ol>
         {% for product in Products %}
-          <option value="{{ product.productID }}">{{ product.productName }}</option>
+          <li>{{ product.productName }}</li>
         {% endfor %}
-      </select>
-    </div>
-    <div class="form-group m-2">
-      {% for product in Products %}
-        <hr />
-        <label>ProductID</label>
-        <input class="form-control" type="text" value="{{ product.productID }}" />
-        <label text="{{ product.productName }}">Product Name</label>
-        <input class="form-control" type="text" value="{{ product.productName }}" />
-        <label text="{{ product.quantity }}">Quantity</label>
-        <input class="form-control" type="text" value="{{ product.quantity }}" />
-      {% endfor %}
-    </div>
-    <div>
-      <h2>Select Processor</h2>
-      <select>
-        {% for processor in Processors %}
-          <optgroup label="{{ processor.Category }}">
-            {% for processorname in processor.processors %}
-              <option>{{ processorname }}</option>
-            {% endfor %}
-          </optgroup>
+      </ol>
+      <ol class="list-unstyled">
+        {% for product in Products %}
+          <li>
+            <label for="{{ product.productID }}">Product ID</label>
+            <input type="checkbox" id="{{ product.productID }}" /> {{ product.productName }}
+          </li>
         {% endfor %}
-      </select>
-    </div>
-    <hr />
+      </ol>
+      <ol class="list-unstyled">
+        {% for product in Products %}
+          <li>
+            <input type="radio" name="productName" id="{{ product.productID }}" /> {{ product.productName }}
+          </li>
+        {% endfor %}
+      </ol>
+      <div>
+        <select class="form-select">
+          {% for product in Products %}
+            <option value="{{ product.productID }}">{{ product.productName }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div>
+        <select class="form-select" size="4">
+          {% for product in Products %}
+            <option value="{{ product.productID }}">{{ product.productName }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form-group m-2">
+        {% for product in Products %}
+          <hr />
+          <label>ProductID</label>
+          <input class="form-control" type="text" value="{{ product.productID }}" />
+          <label text="{{ product.productName }}">Product Name</label>
+          <input class="form-control" type="text" value="{{ product.productName }}" />
+          <label text="{{ product.quantity }}">Quantity</label>
+          <input class="form-control" type="text" value="{{ product.quantity }}" />
+        {% endfor %}
+      </div>
+      <div>
+        <h2>Select Processor</h2>
+        <select>
+          {% for processor in Processors %}
+            <optgroup label="{{ processor.Category }}">
+              {% for processorname in processor.processors %}
+                <option>{{ processorname }}</option>
+              {% endfor %}
+            </optgroup>
+          {% endfor %}
+        </select>
+      </div>
+    {% endblock %}
+    {% comment %} <hr />
   </body>
-</html>
+</html> {% endcomment %}

@@ -4,7 +4,8 @@ from . import views
 
 urlpatterns = [
     path("Home", views.Home, name="Home"),
-    path("", views.Home, name="Home"),
+    path("", views.Index, name="Index"),
+    path("Index", views.Index, name="Index"),
     path("ShowMessages", views.ShowMoreMessage, name="ShowMessages"),
     path("UseVariables", views.UseVariablesAsResponse, name="UVR"),
     path("GetRequestDemo", views.GetRequestVariables, name="GVR"),
