@@ -218,7 +218,17 @@ def CallRestAPI2(userid):
 
 
 def LoadUserDetails(request):
-    counter = 1
+    counter = int(request.POST.get("useridcounter"))
+    if request.POST.get("btnNext"):
+        counter += 1
+        if counter >= 11:
+            counter = 1
+    elif request.POST.get("btnPrevious"):
+        counter -= 1
+        if counter == 0:
+            counter = 0
+    else:
+        counter = 1
     templatefilename = "djangobasicsapp/ShowUserDetails.html"
     response = CallRestAPI2(counter)
     image = "https://i.pravatar.cc"
