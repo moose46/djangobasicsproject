@@ -8,6 +8,8 @@ from urllib import request
 from django.http import HttpResponse
 from django.shortcuts import render
 
+from djangobasicsapp.models import Authors
+
 
 # Create your views here.
 # function based view
@@ -219,21 +221,36 @@ def CallRestAPI2(userid):
 
 def LoadUserDetails(request):
     if request.method == "POST":
-        counter=int(request.POST.get("useridcounter"))
+        counter = int(request.POST.get("useridcounter"))
 
-        if(request.POST.get("btnNext")):
-            counter=counter+1
+        if request.POST.get("btnNext"):
+            counter = counter + 1
             if counter >= 11:
-                counter=1
-        elif(request.POST.get("btnPrevious")):           
-            counter=counter - 1
-            if counter==0:
-                counter=1
-    
+                counter = 1
+        elif request.POST.get("btnPrevious"):
+            counter = counter - 1
+            if counter == 0:
+                counter = 1
+
     else:
-        counter=1     
+        counter = 1
     templatefilename = "djangobasicsapp/ShowUserDetails.html"
     response = CallRestAPI2(counter)
     image = "https://i.pravatar.cc"
     context = {"user": response.json(), "image": image}
     return render(request, templatefilename, context)
+
+
+def PassModelToTemplate(request):
+    #  instantiated model class object
+    obj = Authors("Billy Bob", "USA", "Pickellball is Easy")
+    templatefilename = "djangobasicsapp/PassModel.html"
+
+    AuthorsList = [Authors("Lesnor", Country="USA", BookName="UFC")]
+    AuthorsList.append(Authors("Nate Diaz", Country="USA", BookName="UFC"))
+    AuthorsList.append(Authors("Nick Diaz", Country="USA", BookName="UFC"))
+    AuthorsList.append(Authors("Conners McGregor", Country="USA", BookName="UFC"))
+    AuthorsList.append(Authors("Michael Chandler", Country="USA", BookName="UFC"))
+
+    context = {"Author": obj, "Authors": AuthorsList}
+    return render(request, templatefilename, context=context)
