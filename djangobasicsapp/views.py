@@ -218,7 +218,10 @@ def CallRestAPI2(userid):
 
 
 def LoadUserDetails(request):
-    counter = int(request.POST.get("useridcounter"))
+    if request.POST.get("useridcounter") == None:
+        counter = 1
+    else:
+        counter = int(request.POST.get("useridcounter"))
     if request.POST.get("btnNext"):
         counter += 1
         if counter >= 11:
