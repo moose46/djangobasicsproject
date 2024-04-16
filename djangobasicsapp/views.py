@@ -254,3 +254,29 @@ def PassModelToTemplate(request):
 
     context = {"Author": obj, "Authors": AuthorsList}
     return render(request, templatefilename, context=context)
+
+
+def BuiltInFiltersDemo(request):
+    Processors = [
+        {"name": "Ryzen 3970", "cores": 32},
+        {"name": "Ryzen 3950", "cores": 16},
+        {"name": "Ryzen 3990", "cores": 64},
+    ]
+    context = {
+        "ProbationPeriod": 4,
+        "FirstName": "Connors",
+        "LastName": "McGregor",
+        "PayForFight": 123456,
+        "FirstQuarter": ["Jan", "Feb", "Mar"],
+        "SecondQuarter": ["Apr", "May", "Jun"],
+        "FQuarter": [1, 2, 3],
+        "SQuarter": [4, 5, 6],
+        "AboutMe": "i'am Notorious and I'am Ruthless too!",
+        "now": datetime.now(),
+        "PreviousFight": " ",
+        "NextFight": None,
+        "Processors": Processors,
+        "Message": "<h1>I am using escape</h1>",
+        "WebSite": "https://www.uiacademy.co.in",
+    }
+    return render(request, "djangobasicsapp/BIFDemo.html", context)
