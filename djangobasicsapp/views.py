@@ -273,7 +273,7 @@ def BuiltInFiltersDemo(request):
         "SQuarter": [4, 5, 6],
         "AboutMe": "i'am Notorious and I'am Ruthless too!",
         "now": datetime.now(),
-        "PreviousFight": " ",
+        "PreviousFight": "",
         "NextFight": None,
         "Processors": Processors,
         "Message": "<h1>I am using escape</h1>",

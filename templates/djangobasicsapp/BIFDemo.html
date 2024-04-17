@@ -42,4 +42,49 @@
   <p>Time in 12 Hour Format with am or pm: {{ now|date:'P' }}</p>
   <p>Using Multiple Specifiers: {{ now|date:'D d M Y' }}</p>
   <p>Time: {{ now|time:'H:i:s:u' }}</p>
+
+  <h1>Sorting Dictionaries</h1>
+  <p>Sorting Dictionary : {{ Processors|dictsort:'cores' }}</p>
+  <div>
+    {% for Processor in Processors|dictsort:'cores' %}
+      <ul>
+        <li>{{ Processor.name }} ({{ Processor.cores }})</li>
+      </ul>
+    {% endfor %}
+  </div>
+  <h1>Reverse Sorting Dictionaries</h1>
+  <p>Sorting Dictionary : {{ Processors|dictsortreversed:'cores' }}</p>
+  <div>
+    {% for Processor in Processors|dictsortreversed:'cores' %}
+      <ul>
+        <li>{{ Processor.name }} ({{ Processor.cores }})</li>
+      </ul>
+    {% endfor %}
+  </div>
+  <h1>Micellaneous Filters</h1>
+  <p>File Size {{ PayForFight|filesizeformat }}</p>
+  <p>{{ Message|safe }}</p>
+  <p>{{ Message|force_escape }}</p>
+  {% autoescape off %}
+    <p>{{Message|safe}}</p>
+  {% endautoescape %}
+  <p>PreviousFight : {{PreviousFight|default:"Not Available"}}</p>
+  <p>NextFight : {{NextFight|default_if_none:"Not Available"}}</p>
+  <h1>Numerical Filters</h1>
+  <p>{{PayForFight | floatformat:'3'}}</p>
+  <p>{{PayForFight | floatformat:'3g'}}</p>
+  <p>{{PayForFight | divisibleby:'3'}}</p>
+  <p>{{PayForFight | get_digit:'2'}}</p>
+  <p>{{Processors|first}}</p>
+  <p>{{Processors|last}}</p>
+  <h1>Cut : {{AboutMe | cut:" "}}</h1>
+  <p>{{Processors|join:" // "}}</p>
+  <p>{{Processors|slice:"1"}}</p>
+  <p>{{Processors|length}}</p>
+  <p>{{Processors|make_list}}</p>
+  <p>{{Processors|random}}</p>
+  <p>{{FirstName|truncatechars:21}}</p>
+  <p>{{AboutMe|truncatewords:2}}</p>
+  <p>{{AboutMe|wordcount}}</p>
+  <p>{{AboutMe|wordwrap:2}}</p>
 {% endblock %}
