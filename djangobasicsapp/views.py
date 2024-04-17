@@ -280,3 +280,7 @@ def BuiltInFiltersDemo(request):
         "WebSite": "https://www.uiacademy.co.in",
     }
     return render(request, "djangobasicsapp/BIFDemo.html", context)
+
+
+def CustomFiltersDemo(request):
+    return render(request, "djangobasicsapp/TestCustomeFilters.html")
