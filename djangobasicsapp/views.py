@@ -283,4 +283,9 @@ def BuiltInFiltersDemo(request):
 
 
 def CustomFiltersDemo(request):
-    return render(request, "djangobasicsapp/TestCustomeFilters.html")
+    webframeworks = {
+        "Description": "Django is a Python framework that makes it easier to create dynamic web sites using Python",
+        "InDemand": "4.8",
+        "PollNumber": 57650,
+    }
+    return render(request, "djangobasicsapp/TestCustomFilters.html", webframeworks)

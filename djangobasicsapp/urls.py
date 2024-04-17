@@ -18,4 +18,5 @@ urlpatterns = [
     path("ShowUsersDetails", views.LoadUserDetails, name="ShowUserDetails"),
     path("PassModel", views.PassModelToTemplate, name="PassModel"),
     path("BIFDemo", views.BuiltInFiltersDemo, name="BIF"),
+    path("CustomFiltersDemo", views.CustomFiltersDemo, name="CFDemo"),
 ]
