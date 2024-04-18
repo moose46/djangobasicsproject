@@ -19,4 +19,5 @@ urlpatterns = [
     path("PassModel", views.PassModelToTemplate, name="PassModel"),
     path("BIFDemo", views.BuiltInFiltersDemo, name="BIF"),
     path("CustomFiltersDemo", views.CustomFiltersDemo, name="CFDemo"),
+    path("TestStaticFiles", views.TestStaticFiles, name="TSF"),
 ]

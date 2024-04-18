@@ -289,3 +289,7 @@ def CustomFiltersDemo(request):
         "PollNumber": 57650,
     }
     return render(request, "djangobasicsapp/TestCustomFilters.html", webframeworks)
+
+
+def TestStaticFiles(request):
+    return render(request, "djangobasicsapp/TestStaticFiles.html")

@@ -2,3 +2,5 @@
 /db.sqlite3
 /logs
 .vscode/launch.json
+/static/djangobasicsapp/js
+/static/djangobasicsapp/css
